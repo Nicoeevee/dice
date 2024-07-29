@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
-        fontFamily: !kIsWeb || Platform.isWindows ? '微软雅黑' : null,
+        fontFamily: kIsWeb
+            ? null
+            : Platform.isWindows
+                ? '微软雅黑'
+                : null,
         listTileTheme: const ListTileThemeData(
           contentPadding: EdgeInsets.symmetric(horizontal: 16),
         ),
@@ -27,7 +31,11 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        fontFamily: !kIsWeb || Platform.isWindows ? '微软雅黑' : null,
+        fontFamily: kIsWeb
+            ? null
+            : Platform.isWindows
+                ? '微软雅黑'
+                : null,
         listTileTheme: const ListTileThemeData(
           contentPadding: EdgeInsets.symmetric(horizontal: 16),
         ),
