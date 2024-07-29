@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dice/dice/presentation/pages/logs_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,12 +18,20 @@ class MyApp extends StatelessWidget {
       title: 'Dice',
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: Platform.isWindows ? "微软雅黑" : null,
+        fontFamily: kIsWeb
+            ? null
+            : Platform.isWindows
+                ? "微软雅黑"
+                : null,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        fontFamily: Platform.isWindows ? "微软雅黑" : null,
+        fontFamily: kIsWeb
+            ? null
+            : Platform.isWindows
+                ? "微软雅黑"
+                : null,
       ),
       home: const LogsScreen(),
       themeMode: ThemeMode.light,
