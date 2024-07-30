@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
         fontFamily: !kIsWeb || Platform.isWindows ? "微软雅黑" : null,
       ),
       home: const LogsScreen(),
-      themeMode: ThemeMode.light,
     );
   }
 }
