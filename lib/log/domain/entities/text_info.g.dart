@@ -14,7 +14,7 @@ _$TextInfoImpl _$$TextInfoImplFromJson(Map<String, dynamic> json) =>
       charInfo: (json['charInfo'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, CharItem.fromJson(e as Map<String, dynamic>)),
       ),
-      startText: json['startText'] as String,
+      startText: json['startText'] as String?,
       exporter: json['exporter'] as String,
     );
 

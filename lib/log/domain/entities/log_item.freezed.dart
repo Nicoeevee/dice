@@ -20,8 +20,7 @@ LogItem _$LogItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LogItem {
-  String get nickname => throw _privateConstructorUsedError;
-  String get IMUserId => throw _privateConstructorUsedError;
+  CharItem get character => throw _privateConstructorUsedError;
   DateTime? get time => throw _privateConstructorUsedError;
   String get timeText => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
@@ -37,11 +36,9 @@ abstract class $LogItemCopyWith<$Res> {
       _$LogItemCopyWithImpl<$Res, LogItem>;
   @useResult
   $Res call(
-      {String nickname,
-      String IMUserId,
-      DateTime? time,
-      String timeText,
-      String message});
+      {CharItem character, DateTime? time, String timeText, String message});
+
+  $CharItemCopyWith<$Res> get character;
 }
 
 /// @nodoc
@@ -57,21 +54,16 @@ class _$LogItemCopyWithImpl<$Res, $Val extends LogItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nickname = null,
-    Object? IMUserId = null,
+    Object? character = null,
     Object? time = freezed,
     Object? timeText = null,
     Object? message = null,
   }) {
     return _then(_value.copyWith(
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      IMUserId: null == IMUserId
-          ? _value.IMUserId
-          : IMUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      character: null == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as CharItem,
       time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -86,6 +78,14 @@ class _$LogItemCopyWithImpl<$Res, $Val extends LogItem>
               as String,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CharItemCopyWith<$Res> get character {
+    return $CharItemCopyWith<$Res>(_value.character, (value) {
+      return _then(_value.copyWith(character: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -96,11 +96,10 @@ abstract class _$$LogItemImplCopyWith<$Res> implements $LogItemCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String nickname,
-      String IMUserId,
-      DateTime? time,
-      String timeText,
-      String message});
+      {CharItem character, DateTime? time, String timeText, String message});
+
+  @override
+  $CharItemCopyWith<$Res> get character;
 }
 
 /// @nodoc
@@ -114,21 +113,16 @@ class __$$LogItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nickname = null,
-    Object? IMUserId = null,
+    Object? character = null,
     Object? time = freezed,
     Object? timeText = null,
     Object? message = null,
   }) {
     return _then(_$LogItemImpl(
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      IMUserId: null == IMUserId
-          ? _value.IMUserId
-          : IMUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      character: null == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as CharItem,
       time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -149,8 +143,7 @@ class __$$LogItemImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LogItemImpl implements _LogItem {
   const _$LogItemImpl(
-      {required this.nickname,
-      required this.IMUserId,
+      {required this.character,
       this.time,
       required this.timeText,
       required this.message});
@@ -159,9 +152,7 @@ class _$LogItemImpl implements _LogItem {
       _$$LogItemImplFromJson(json);
 
   @override
-  final String nickname;
-  @override
-  final String IMUserId;
+  final CharItem character;
   @override
   final DateTime? time;
   @override
@@ -171,7 +162,7 @@ class _$LogItemImpl implements _LogItem {
 
   @override
   String toString() {
-    return 'LogItem(nickname: $nickname, IMUserId: $IMUserId, time: $time, timeText: $timeText, message: $message)';
+    return 'LogItem(character: $character, time: $time, timeText: $timeText, message: $message)';
   }
 
   @override
@@ -179,10 +170,8 @@ class _$LogItemImpl implements _LogItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LogItemImpl &&
-            (identical(other.nickname, nickname) ||
-                other.nickname == nickname) &&
-            (identical(other.IMUserId, IMUserId) ||
-                other.IMUserId == IMUserId) &&
+            (identical(other.character, character) ||
+                other.character == character) &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.timeText, timeText) ||
                 other.timeText == timeText) &&
@@ -192,7 +181,7 @@ class _$LogItemImpl implements _LogItem {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, nickname, IMUserId, time, timeText, message);
+      Object.hash(runtimeType, character, time, timeText, message);
 
   @JsonKey(ignore: true)
   @override
@@ -210,8 +199,7 @@ class _$LogItemImpl implements _LogItem {
 
 abstract class _LogItem implements LogItem {
   const factory _LogItem(
-      {required final String nickname,
-      required final String IMUserId,
+      {required final CharItem character,
       final DateTime? time,
       required final String timeText,
       required final String message}) = _$LogItemImpl;
@@ -219,9 +207,7 @@ abstract class _LogItem implements LogItem {
   factory _LogItem.fromJson(Map<String, dynamic> json) = _$LogItemImpl.fromJson;
 
   @override
-  String get nickname;
-  @override
-  String get IMUserId;
+  CharItem get character;
   @override
   DateTime? get time;
   @override

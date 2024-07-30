@@ -21,7 +21,7 @@ CharItem _$CharItemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CharItem {
   String get nickname => throw _privateConstructorUsedError;
-  String get IMUserId => throw _privateConstructorUsedError;
+  String get imUserId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $CharItemCopyWith<$Res> {
   factory $CharItemCopyWith(CharItem value, $Res Function(CharItem) then) =
       _$CharItemCopyWithImpl<$Res, CharItem>;
   @useResult
-  $Res call({String nickname, String IMUserId});
+  $Res call({String nickname, String imUserId});
 }
 
 /// @nodoc
@@ -51,16 +51,16 @@ class _$CharItemCopyWithImpl<$Res, $Val extends CharItem>
   @override
   $Res call({
     Object? nickname = null,
-    Object? IMUserId = null,
+    Object? imUserId = null,
   }) {
     return _then(_value.copyWith(
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      IMUserId: null == IMUserId
-          ? _value.IMUserId
-          : IMUserId // ignore: cast_nullable_to_non_nullable
+      imUserId: null == imUserId
+          ? _value.imUserId
+          : imUserId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -74,7 +74,7 @@ abstract class _$$CharItemImplCopyWith<$Res>
       __$$CharItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String nickname, String IMUserId});
+  $Res call({String nickname, String imUserId});
 }
 
 /// @nodoc
@@ -89,16 +89,16 @@ class __$$CharItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? nickname = null,
-    Object? IMUserId = null,
+    Object? imUserId = null,
   }) {
     return _then(_$CharItemImpl(
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      IMUserId: null == IMUserId
-          ? _value.IMUserId
-          : IMUserId // ignore: cast_nullable_to_non_nullable
+      imUserId: null == imUserId
+          ? _value.imUserId
+          : imUserId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -107,7 +107,7 @@ class __$$CharItemImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CharItemImpl implements _CharItem {
-  const _$CharItemImpl({required this.nickname, required this.IMUserId});
+  const _$CharItemImpl({required this.nickname, required this.imUserId});
 
   factory _$CharItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$CharItemImplFromJson(json);
@@ -115,11 +115,11 @@ class _$CharItemImpl implements _CharItem {
   @override
   final String nickname;
   @override
-  final String IMUserId;
+  final String imUserId;
 
   @override
   String toString() {
-    return 'CharItem(nickname: $nickname, IMUserId: $IMUserId)';
+    return 'CharItem(nickname: $nickname, imUserId: $imUserId)';
   }
 
   @override
@@ -129,13 +129,13 @@ class _$CharItemImpl implements _CharItem {
             other is _$CharItemImpl &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
-            (identical(other.IMUserId, IMUserId) ||
-                other.IMUserId == IMUserId));
+            (identical(other.imUserId, imUserId) ||
+                other.imUserId == imUserId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, IMUserId);
+  int get hashCode => Object.hash(runtimeType, nickname, imUserId);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +154,7 @@ class _$CharItemImpl implements _CharItem {
 abstract class _CharItem implements CharItem {
   const factory _CharItem(
       {required final String nickname,
-      required final String IMUserId}) = _$CharItemImpl;
+      required final String imUserId}) = _$CharItemImpl;
 
   factory _CharItem.fromJson(Map<String, dynamic> json) =
       _$CharItemImpl.fromJson;
@@ -162,7 +162,7 @@ abstract class _CharItem implements CharItem {
   @override
   String get nickname;
   @override
-  String get IMUserId;
+  String get imUserId;
   @override
   @JsonKey(ignore: true)
   _$$CharItemImplCopyWith<_$CharItemImpl> get copyWith =>

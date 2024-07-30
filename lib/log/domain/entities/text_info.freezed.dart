@@ -22,7 +22,7 @@ TextInfo _$TextInfoFromJson(Map<String, dynamic> json) {
 mixin _$TextInfo {
   List<LogItem> get items => throw _privateConstructorUsedError;
   Map<String, CharItem> get charInfo => throw _privateConstructorUsedError;
-  String get startText => throw _privateConstructorUsedError;
+  String? get startText => throw _privateConstructorUsedError;
   String get exporter => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $TextInfoCopyWith<$Res> {
   $Res call(
       {List<LogItem> items,
       Map<String, CharItem> charInfo,
-      String startText,
+      String? startText,
       String exporter});
 }
 
@@ -58,7 +58,7 @@ class _$TextInfoCopyWithImpl<$Res, $Val extends TextInfo>
   $Res call({
     Object? items = null,
     Object? charInfo = null,
-    Object? startText = null,
+    Object? startText = freezed,
     Object? exporter = null,
   }) {
     return _then(_value.copyWith(
@@ -70,10 +70,10 @@ class _$TextInfoCopyWithImpl<$Res, $Val extends TextInfo>
           ? _value.charInfo
           : charInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, CharItem>,
-      startText: null == startText
+      startText: freezed == startText
           ? _value.startText
           : startText // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       exporter: null == exporter
           ? _value.exporter
           : exporter // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,7 @@ abstract class _$$TextInfoImplCopyWith<$Res>
   $Res call(
       {List<LogItem> items,
       Map<String, CharItem> charInfo,
-      String startText,
+      String? startText,
       String exporter});
 }
 
@@ -110,7 +110,7 @@ class __$$TextInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
     Object? charInfo = null,
-    Object? startText = null,
+    Object? startText = freezed,
     Object? exporter = null,
   }) {
     return _then(_$TextInfoImpl(
@@ -122,10 +122,10 @@ class __$$TextInfoImplCopyWithImpl<$Res>
           ? _value._charInfo
           : charInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, CharItem>,
-      startText: null == startText
+      startText: freezed == startText
           ? _value.startText
           : startText // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       exporter: null == exporter
           ? _value.exporter
           : exporter // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ class _$TextInfoImpl implements _TextInfo {
   const _$TextInfoImpl(
       {required final List<LogItem> items,
       required final Map<String, CharItem> charInfo,
-      required this.startText,
+      this.startText,
       required this.exporter})
       : _items = items,
         _charInfo = charInfo;
@@ -165,7 +165,7 @@ class _$TextInfoImpl implements _TextInfo {
   }
 
   @override
-  final String startText;
+  final String? startText;
   @override
   final String exporter;
 
@@ -214,7 +214,7 @@ abstract class _TextInfo implements TextInfo {
   const factory _TextInfo(
       {required final List<LogItem> items,
       required final Map<String, CharItem> charInfo,
-      required final String startText,
+      final String? startText,
       required final String exporter}) = _$TextInfoImpl;
 
   factory _TextInfo.fromJson(Map<String, dynamic> json) =
@@ -225,7 +225,7 @@ abstract class _TextInfo implements TextInfo {
   @override
   Map<String, CharItem> get charInfo;
   @override
-  String get startText;
+  String? get startText;
   @override
   String get exporter;
   @override

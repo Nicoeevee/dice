@@ -8,8 +8,7 @@ part of 'log_item.dart';
 
 _$LogItemImpl _$$LogItemImplFromJson(Map<String, dynamic> json) =>
     _$LogItemImpl(
-      nickname: json['nickname'] as String,
-      IMUserId: json['IMUserId'] as String,
+      character: CharItem.fromJson(json['character'] as Map<String, dynamic>),
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
       timeText: json['timeText'] as String,
@@ -18,8 +17,7 @@ _$LogItemImpl _$$LogItemImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LogItemImplToJson(_$LogItemImpl instance) =>
     <String, dynamic>{
-      'nickname': instance.nickname,
-      'IMUserId': instance.IMUserId,
+      'character': instance.character,
       'time': instance.time?.toIso8601String(),
       'timeText': instance.timeText,
       'message': instance.message,

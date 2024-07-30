@@ -7,7 +7,7 @@ part 'char_item.g.dart';
 class CharItem with _$CharItem {
   const factory CharItem({
     required String nickname,
-    required String IMUserId,
+    required String imUserId,
   }) = _CharItem;
 
   factory CharItem.fromJson(Map<String, dynamic> json) =>
