@@ -18,20 +18,12 @@ class MyApp extends StatelessWidget {
       title: 'Dice',
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: kIsWeb
-            ? null
-            : Platform.isWindows
-                ? "微软雅黑"
-                : null,
+        fontFamily: !kIsWeb || Platform.isWindows ? "微软雅黑" : null,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        fontFamily: kIsWeb
-            ? null
-            : Platform.isWindows
-                ? "微软雅黑"
-                : null,
+        fontFamily: !kIsWeb || Platform.isWindows ? "微软雅黑" : null,
       ),
       home: const LogsScreen(),
       themeMode: ThemeMode.light,
