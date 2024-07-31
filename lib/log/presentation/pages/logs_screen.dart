@@ -69,6 +69,7 @@ title: 标题在这里
                 padding: const EdgeInsets.all(8),
                 child: TextField(
                   controller: _textEditingController,
+                  selectionHeightStyle: BoxHeightStyle.strut,
                   maxLines: null,
                   expands: true,
                   textAlignVertical: TextAlignVertical.top,
