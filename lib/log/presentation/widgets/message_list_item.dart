@@ -42,28 +42,17 @@ class _MessageBubbleState extends State<MessageBubble> {
             color: textColor,
           ),
         ),
-        // child: IntrinsicWidth(
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       Text(
-        //         widget.message,
-        //         style: textTheme.bodyMedium?.copyWith(
-        //           color: textColor,
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ),
     );
 
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          showDateTime = !showDateTime;
-        });
-      },
+      onTap: widget.time == null
+          ? null
+          : () {
+              setState(() {
+                showDateTime = !showDateTime;
+              });
+            },
       child: IntrinsicWidth(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
@@ -72,27 +61,19 @@ class _MessageBubbleState extends State<MessageBubble> {
                 ? CrossAxisAlignment.end
                 : CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    widget.userName,
-                    style: textTheme.titleSmall?.copyWith(
-                      color: textColor,
-                    ),
-                  ),
-                  if (showDateTime && widget.time != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: Text(
-                        textAlign: TextAlign.end,
-                        DateFormat.Hms().format(widget.time!),
-                        style: textTheme.titleSmall?.copyWith(
-                          color: textColor,
-                        ),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: widget.userName),
+                    if (showDateTime && widget.time != null)
+                      TextSpan(
+                        text: ' ${DateFormat.Hms().format(widget.time!)}',
                       ),
-                    )
-                ],
+                  ],
+                ),
+                style: textTheme.titleSmall?.copyWith(
+                  color: textColor,
+                ),
               ),
               messageBubble,
             ],
