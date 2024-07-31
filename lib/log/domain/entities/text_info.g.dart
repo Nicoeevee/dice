@@ -14,14 +14,14 @@ _$TextInfoImpl _$$TextInfoImplFromJson(Map<String, dynamic> json) =>
       charInfo: (json['charInfo'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, CharItem.fromJson(e as Map<String, dynamic>)),
       ),
-      startText: json['startText'] as String?,
       exporter: json['exporter'] as String,
+      startText: json['startText'] as String?,
     );
 
 Map<String, dynamic> _$$TextInfoImplToJson(_$TextInfoImpl instance) =>
     <String, dynamic>{
       'items': instance.items,
       'charInfo': instance.charInfo,
-      'startText': instance.startText,
       'exporter': instance.exporter,
+      'startText': instance.startText,
     };

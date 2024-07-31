@@ -21,9 +21,9 @@ LogItem _$LogItemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LogItem {
   CharItem get character => throw _privateConstructorUsedError;
-  DateTime? get time => throw _privateConstructorUsedError;
   String get timeText => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  DateTime? get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $LogItemCopyWith<$Res> {
       _$LogItemCopyWithImpl<$Res, LogItem>;
   @useResult
   $Res call(
-      {CharItem character, DateTime? time, String timeText, String message});
+      {CharItem character, String timeText, String message, DateTime? time});
 
   $CharItemCopyWith<$Res> get character;
 }
@@ -55,19 +55,15 @@ class _$LogItemCopyWithImpl<$Res, $Val extends LogItem>
   @override
   $Res call({
     Object? character = null,
-    Object? time = freezed,
     Object? timeText = null,
     Object? message = null,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       character: null == character
           ? _value.character
           : character // ignore: cast_nullable_to_non_nullable
               as CharItem,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       timeText: null == timeText
           ? _value.timeText
           : timeText // ignore: cast_nullable_to_non_nullable
@@ -76,6 +72,10 @@ class _$LogItemCopyWithImpl<$Res, $Val extends LogItem>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 
@@ -96,7 +96,7 @@ abstract class _$$LogItemImplCopyWith<$Res> implements $LogItemCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {CharItem character, DateTime? time, String timeText, String message});
+      {CharItem character, String timeText, String message, DateTime? time});
 
   @override
   $CharItemCopyWith<$Res> get character;
@@ -114,19 +114,15 @@ class __$$LogItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? character = null,
-    Object? time = freezed,
     Object? timeText = null,
     Object? message = null,
+    Object? time = freezed,
   }) {
     return _then(_$LogItemImpl(
       character: null == character
           ? _value.character
           : character // ignore: cast_nullable_to_non_nullable
               as CharItem,
-      time: freezed == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       timeText: null == timeText
           ? _value.timeText
           : timeText // ignore: cast_nullable_to_non_nullable
@@ -135,6 +131,10 @@ class __$$LogItemImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -144,9 +144,9 @@ class __$$LogItemImplCopyWithImpl<$Res>
 class _$LogItemImpl implements _LogItem {
   const _$LogItemImpl(
       {required this.character,
-      this.time,
       required this.timeText,
-      required this.message});
+      required this.message,
+      this.time});
 
   factory _$LogItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$LogItemImplFromJson(json);
@@ -154,15 +154,15 @@ class _$LogItemImpl implements _LogItem {
   @override
   final CharItem character;
   @override
-  final DateTime? time;
-  @override
   final String timeText;
   @override
   final String message;
+  @override
+  final DateTime? time;
 
   @override
   String toString() {
-    return 'LogItem(character: $character, time: $time, timeText: $timeText, message: $message)';
+    return 'LogItem(character: $character, timeText: $timeText, message: $message, time: $time)';
   }
 
   @override
@@ -172,16 +172,16 @@ class _$LogItemImpl implements _LogItem {
             other is _$LogItemImpl &&
             (identical(other.character, character) ||
                 other.character == character) &&
-            (identical(other.time, time) || other.time == time) &&
             (identical(other.timeText, timeText) ||
                 other.timeText == timeText) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.time, time) || other.time == time));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, character, time, timeText, message);
+      Object.hash(runtimeType, character, timeText, message, time);
 
   @JsonKey(ignore: true)
   @override
@@ -200,20 +200,20 @@ class _$LogItemImpl implements _LogItem {
 abstract class _LogItem implements LogItem {
   const factory _LogItem(
       {required final CharItem character,
-      final DateTime? time,
       required final String timeText,
-      required final String message}) = _$LogItemImpl;
+      required final String message,
+      final DateTime? time}) = _$LogItemImpl;
 
   factory _LogItem.fromJson(Map<String, dynamic> json) = _$LogItemImpl.fromJson;
 
   @override
   CharItem get character;
   @override
-  DateTime? get time;
-  @override
   String get timeText;
   @override
   String get message;
+  @override
+  DateTime? get time;
   @override
   @JsonKey(ignore: true)
   _$$LogItemImplCopyWith<_$LogItemImpl> get copyWith =>

@@ -1,9 +1,10 @@
+import 'dart:ui';
+
 import 'package:dice/log/domain/entities/char_item.dart';
 import 'package:dice/log/domain/entities/dice_kokona_log_importer.dart';
+import 'package:dice/log/domain/entities/seal_doc_parser.dart';
 import 'package:dice/log/domain/entities/text_info.dart';
-import 'package:dice/log/domain/entities/text_plain_log_importer.dart';
 import 'package:dice/log/presentation/widgets/message_list_item.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -43,15 +44,14 @@ title: 标题在这里
   }
 
   void _parseLogs() {
-    setState(() {
-      if (DiceKokonaLogImporter.check(_textEditingController.text)) {
-        textInfo = DiceKokonaLogImporter.parse(_textEditingController.text);
-      } else if (TextParser.check(_textEditingController.text)) {
-        textInfo = TextParser.parse(_textEditingController.text);
-      } else {
-        textInfo = null;
-      }
-    });
+    if (DiceKokonaLogImporter.check(_textEditingController.text)) {
+      textInfo = DiceKokonaLogImporter.parse(_textEditingController.text);
+    } else if (SealDocParser.check(_textEditingController.text)) {
+      textInfo = SealDocParser.parse(_textEditingController.text);
+    } else {
+      textInfo = null;
+    }
+    setState(() {});
   }
 
   @override

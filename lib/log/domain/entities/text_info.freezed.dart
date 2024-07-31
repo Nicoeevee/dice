@@ -22,8 +22,8 @@ TextInfo _$TextInfoFromJson(Map<String, dynamic> json) {
 mixin _$TextInfo {
   List<LogItem> get items => throw _privateConstructorUsedError;
   Map<String, CharItem> get charInfo => throw _privateConstructorUsedError;
-  String? get startText => throw _privateConstructorUsedError;
   String get exporter => throw _privateConstructorUsedError;
+  String? get startText => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,8 +39,8 @@ abstract class $TextInfoCopyWith<$Res> {
   $Res call(
       {List<LogItem> items,
       Map<String, CharItem> charInfo,
-      String? startText,
-      String exporter});
+      String exporter,
+      String? startText});
 }
 
 /// @nodoc
@@ -58,8 +58,8 @@ class _$TextInfoCopyWithImpl<$Res, $Val extends TextInfo>
   $Res call({
     Object? items = null,
     Object? charInfo = null,
-    Object? startText = freezed,
     Object? exporter = null,
+    Object? startText = freezed,
   }) {
     return _then(_value.copyWith(
       items: null == items
@@ -70,14 +70,14 @@ class _$TextInfoCopyWithImpl<$Res, $Val extends TextInfo>
           ? _value.charInfo
           : charInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, CharItem>,
-      startText: freezed == startText
-          ? _value.startText
-          : startText // ignore: cast_nullable_to_non_nullable
-              as String?,
       exporter: null == exporter
           ? _value.exporter
           : exporter // ignore: cast_nullable_to_non_nullable
               as String,
+      startText: freezed == startText
+          ? _value.startText
+          : startText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -93,8 +93,8 @@ abstract class _$$TextInfoImplCopyWith<$Res>
   $Res call(
       {List<LogItem> items,
       Map<String, CharItem> charInfo,
-      String? startText,
-      String exporter});
+      String exporter,
+      String? startText});
 }
 
 /// @nodoc
@@ -110,8 +110,8 @@ class __$$TextInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
     Object? charInfo = null,
-    Object? startText = freezed,
     Object? exporter = null,
+    Object? startText = freezed,
   }) {
     return _then(_$TextInfoImpl(
       items: null == items
@@ -122,14 +122,14 @@ class __$$TextInfoImplCopyWithImpl<$Res>
           ? _value._charInfo
           : charInfo // ignore: cast_nullable_to_non_nullable
               as Map<String, CharItem>,
-      startText: freezed == startText
-          ? _value.startText
-          : startText // ignore: cast_nullable_to_non_nullable
-              as String?,
       exporter: null == exporter
           ? _value.exporter
           : exporter // ignore: cast_nullable_to_non_nullable
               as String,
+      startText: freezed == startText
+          ? _value.startText
+          : startText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -140,8 +140,8 @@ class _$TextInfoImpl implements _TextInfo {
   const _$TextInfoImpl(
       {required final List<LogItem> items,
       required final Map<String, CharItem> charInfo,
-      this.startText,
-      required this.exporter})
+      required this.exporter,
+      this.startText})
       : _items = items,
         _charInfo = charInfo;
 
@@ -165,13 +165,13 @@ class _$TextInfoImpl implements _TextInfo {
   }
 
   @override
-  final String? startText;
-  @override
   final String exporter;
+  @override
+  final String? startText;
 
   @override
   String toString() {
-    return 'TextInfo(items: $items, charInfo: $charInfo, startText: $startText, exporter: $exporter)';
+    return 'TextInfo(items: $items, charInfo: $charInfo, exporter: $exporter, startText: $startText)';
   }
 
   @override
@@ -181,10 +181,10 @@ class _$TextInfoImpl implements _TextInfo {
             other is _$TextInfoImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality().equals(other._charInfo, _charInfo) &&
-            (identical(other.startText, startText) ||
-                other.startText == startText) &&
             (identical(other.exporter, exporter) ||
-                other.exporter == exporter));
+                other.exporter == exporter) &&
+            (identical(other.startText, startText) ||
+                other.startText == startText));
   }
 
   @JsonKey(ignore: true)
@@ -193,8 +193,8 @@ class _$TextInfoImpl implements _TextInfo {
       runtimeType,
       const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(_charInfo),
-      startText,
-      exporter);
+      exporter,
+      startText);
 
   @JsonKey(ignore: true)
   @override
@@ -214,8 +214,8 @@ abstract class _TextInfo implements TextInfo {
   const factory _TextInfo(
       {required final List<LogItem> items,
       required final Map<String, CharItem> charInfo,
-      final String? startText,
-      required final String exporter}) = _$TextInfoImpl;
+      required final String exporter,
+      final String? startText}) = _$TextInfoImpl;
 
   factory _TextInfo.fromJson(Map<String, dynamic> json) =
       _$TextInfoImpl.fromJson;
@@ -225,9 +225,9 @@ abstract class _TextInfo implements TextInfo {
   @override
   Map<String, CharItem> get charInfo;
   @override
-  String? get startText;
-  @override
   String get exporter;
+  @override
+  String? get startText;
   @override
   @JsonKey(ignore: true)
   _$$TextInfoImplCopyWith<_$TextInfoImpl> get copyWith =>
