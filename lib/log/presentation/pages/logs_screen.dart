@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:dice/constants/fake_logs.dart';
 import 'package:dice/log/domain/entities/char_item.dart';
 import 'package:dice/log/domain/entities/dice_kokona_log_importer.dart';
 import 'package:dice/log/domain/entities/seal_doc_parser.dart';
@@ -16,18 +17,8 @@ class LogsScreen extends StatefulWidget {
 }
 
 class _LogsScreenState extends State<LogsScreen> {
-  static const String content = '''
---
-title: 标题在这里
---  
-
-张三(123) 2023-04-20 10:00:00
-测试消息1
-
-李四<test> 10:01:00
-测试消息2''';
   final TextEditingController _textEditingController =
-      TextEditingController(text: content);
+      TextEditingController(text: sealLog);
   TextInfo? textInfo;
   CharItem? me;
 
