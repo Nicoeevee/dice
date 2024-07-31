@@ -80,103 +80,112 @@ class _LogsScreenState extends State<LogsScreen> {
           ),
           const VerticalDivider(),
           Expanded(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: const Icon(Symbols.group),
-                      title: const Text('人数'),
-                      subtitle: Text('${textInfo?.charInfo.length}'),
-                    ),
-                    const Divider(),
-                    Expanded(
-                      child: ScrollConfiguration(
-                        behavior: ScrollConfiguration.of(context).copyWith(
-                          dragDevices: {
-                            PointerDeviceKind.touch,
-                            PointerDeviceKind.mouse,
-                          },
-                        ),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: textInfo?.charInfo.length,
-                          itemBuilder: (context, index) {
-                            final item =
-                                textInfo?.charInfo.entries.elementAt(index);
-                            final character = item?.value;
-                            return CheckboxListTile(
-                              secondary: CircleAvatar(
-                                child: Text(
-                                  '${character?.nickname.characters.take(2)}',
-                                ),
+            child: Column(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 16),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            leading: const Icon(Symbols.group),
+                            title: const Text('人数'),
+                            subtitle: Text('${textInfo?.charInfo.length}'),
+                          ),
+                          const Divider(),
+                          Expanded(
+                            child: ScrollConfiguration(
+                              behavior:
+                                  ScrollConfiguration.of(context).copyWith(
+                                dragDevices: {
+                                  PointerDeviceKind.touch,
+                                  PointerDeviceKind.mouse,
+                                },
                               ),
-                              title: Text('${character?.nickname}'),
-                              subtitle: Text('${character?.imUserId}'),
-                              onChanged: (value) {
-                                setState(() {
-                                  if (value == false) {
-                                    me = null;
-                                    return;
-                                  }
-                                  me = character;
-                                });
-                              },
-                              selected: me == character,
-                              value: me == character,
-                            );
-                          },
-                        ),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: textInfo?.charInfo.length,
+                                itemBuilder: (context, index) {
+                                  final item = textInfo?.charInfo.entries
+                                      .elementAt(index);
+                                  final character = item?.value;
+                                  return CheckboxListTile(
+                                    secondary: CircleAvatar(
+                                      child: Text(
+                                        '${character?.nickname.characters.take(2)}',
+                                      ),
+                                    ),
+                                    title: Text('${character?.nickname}'),
+                                    subtitle: Text('${character?.imUserId}'),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        if (value == false) {
+                                          me = null;
+                                          return;
+                                        }
+                                        me = character;
+                                      });
+                                    },
+                                    selected: me == character,
+                                    value: me == character,
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          const Divider(),
+                          if (textInfo?.startText != null)
+                            ListTile(
+                              leading: const Icon(Symbols.notes),
+                              title: const Text('Start Text'),
+                              subtitle: Text('${textInfo?.startText}'),
+                              isThreeLine: true,
+                            ),
+                          ListTile(
+                            leading: const Icon(Symbols.export_notes),
+                            title: const Text('Exporter'),
+                            subtitle: Text('${textInfo?.exporter}'),
+                            isThreeLine: true,
+                          ),
+                        ],
                       ),
                     ),
-                    const Divider(),
-                    if (textInfo?.startText != null)
-                      ListTile(
-                        leading: const Icon(Symbols.notes),
-                        title: const Text('Start Text'),
-                        subtitle: Text('${textInfo?.startText}'),
-                        isThreeLine: true,
-                      ),
-                    ListTile(
-                      leading: const Icon(Symbols.export_notes),
-                      title: const Text('Exporter'),
-                      subtitle: Text('${textInfo?.exporter}'),
-                      isThreeLine: true,
+                  ),
+                ),
+                const Divider(),
+                Flexible(
+                  flex: 4,
+                  child: ScrollConfiguration(
+                    behavior: ScrollConfiguration.of(context).copyWith(
+                      dragDevices: {
+                        PointerDeviceKind.touch,
+                        PointerDeviceKind.mouse,
+                      },
                     ),
-                  ],
+                    child: SelectionArea(
+                      child: ListView.builder(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 16),
+                        itemCount: textInfo?.items.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final item = textInfo!.items[index];
+                          final character = item.character;
+                          return MessageBubble(
+                            message: item.message,
+                            isUserMe: character == me, // 判断是否是当前用户
+                            userName: character.nickname, // 显示用户名
+                            time: item.time,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          const VerticalDivider(),
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                },
-              ),
-              child: SelectionArea(
-                child: ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  itemCount: textInfo?.items.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final item = textInfo!.items[index];
-                    final character = item.character;
-                    return MessageBubble(
-                      message: item.message,
-                      isUserMe: character == me, // 判断是否是当前用户
-                      userName: character.nickname, // 显示用户名
-                      time: item.time,
-                    );
-                  },
-                ),
-              ),
+              ],
             ),
           ),
         ],
