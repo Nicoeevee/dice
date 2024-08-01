@@ -51,62 +51,77 @@ class _LogsScreenState extends State<LogsScreen> {
       appBar: AppBar(
         title: const Text('Logs'),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextField(
-                  controller: _textEditingController,
-                  selectionHeightStyle: BoxHeightStyle.strut,
-                  maxLines: null,
-                  expands: true,
-                  textAlignVertical: TextAlignVertical.top,
-                  onChanged: (text) => _parseLogs(),
-                  decoration: InputDecoration(
-                    hintText: '输入日志内容',
-                    filled: true, // 填充背景颜色
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20), // 设置圆角
-                      borderSide: BorderSide.none, // 移除边框
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextField(
+                          controller: _textEditingController,
+                          selectionHeightStyle: BoxHeightStyle.strut,
+                          maxLines: null,
+                          expands: true,
+                          textAlignVertical: TextAlignVertical.top,
+                          onChanged: (text) => _parseLogs(),
+                          decoration: InputDecoration(
+                            hintText: '输入日志内容',
+                            filled: true, // 填充背景颜色
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20), // 设置圆角
+                              borderSide: BorderSide.none, // 移除边框
+                            ),
+                            contentPadding: const EdgeInsets.all(16), // 设置内边距
+                          ),
+                        ),
+                      ),
                     ),
-                    contentPadding: const EdgeInsets.all(16), // 设置内边距
                   ),
-                ),
+                  ListTile(
+                    leading: const Icon(Symbols.group),
+                    title: const Text('人数'),
+                    subtitle: Text('${textInfo?.charInfo.length}'),
+                  ),
+                  const Divider(),
+                  if (textInfo?.startText != null)
+                    ListTile(
+                      leading: const Icon(Symbols.notes),
+                      title: const Text('Start Text'),
+                      subtitle: Text('${textInfo?.startText}'),
+                      isThreeLine: true,
+                    ),
+                  ListTile(
+                    leading: const Icon(Symbols.export_notes),
+                    title: const Text('Exporter'),
+                    subtitle: Text('${textInfo?.exporter}'),
+                    isThreeLine: true,
+                  ),
+                ],
               ),
             ),
-          ),
-          const VerticalDivider(),
-          Expanded(
-            child: Column(
-              children: [
-                Flexible(
-                  flex: 2,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 16),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            leading: const Icon(Symbols.group),
-                            title: const Text('人数'),
-                            subtitle: Text('${textInfo?.charInfo.length}'),
-                          ),
-                          const Divider(),
-                          Expanded(
-                            child: ScrollConfiguration(
-                              behavior:
-                                  ScrollConfiguration.of(context).copyWith(
-                                dragDevices: {
-                                  PointerDeviceKind.touch,
-                                  PointerDeviceKind.mouse,
-                                },
-                              ),
-                              child: ListView.builder(
+            const VerticalDivider(),
+            Expanded(
+              child: Column(
+                children: [
+                  Flexible(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: textInfo?.charInfo.length,
                                 itemBuilder: (context, index) {
@@ -135,60 +150,50 @@ class _LogsScreenState extends State<LogsScreen> {
                                   );
                                 },
                               ),
-                            ),
+                            ],
                           ),
-                          const Divider(),
-                          if (textInfo?.startText != null)
-                            ListTile(
-                              leading: const Icon(Symbols.notes),
-                              title: const Text('Start Text'),
-                              subtitle: Text('${textInfo?.startText}'),
-                              isThreeLine: true,
-                            ),
-                          ListTile(
-                            leading: const Icon(Symbols.export_notes),
-                            title: const Text('Exporter'),
-                            subtitle: Text('${textInfo?.exporter}'),
-                            isThreeLine: true,
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Divider(),
-                Flexible(
-                  flex: 4,
-                  child: ScrollConfiguration(
-                    behavior: ScrollConfiguration.of(context).copyWith(
-                      dragDevices: {
-                        PointerDeviceKind.touch,
-                        PointerDeviceKind.mouse,
-                      },
-                    ),
-                    child: SelectionArea(
-                      child: ListView.builder(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 16),
-                        itemCount: textInfo?.items.length ?? 0,
-                        itemBuilder: (context, index) {
-                          final item = textInfo!.items[index];
-                          final character = item.character;
-                          return MessageBubble(
-                            message: item.message,
-                            isUserMe: character == me, // 判断是否是当前用户
-                            userName: character.nickname, // 显示用户名
-                            time: item.time,
-                          );
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Flexible(
+                    flex: 4,
+                    child: ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(context).copyWith(
+                        dragDevices: {
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.mouse,
                         },
                       ),
+                      child: Card(
+                        child: SelectionArea(
+                          child: ListView.builder(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 16),
+                            itemCount: textInfo?.items.length ?? 0,
+                            itemBuilder: (context, index) {
+                              final item = textInfo!.items[index];
+                              final character = item.character;
+                              return MessageBubble(
+                                message: item.message,
+                                isUserMe: character == me, // 判断是否是当前用户
+                                userName: character.nickname, // 显示用户名
+                                time: item.time,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

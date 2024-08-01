@@ -1,0 +1,33 @@
+title: 新的故事
+---
+Apo: 新的故事开始了，祝旅途愉快！
+Apo: 记录已经开启。
+Qwe: （好的测试开始了）
+Qwe:
+Qwe: 从前有一座房子
+Qwe: 房前有两棵树
+Qwe: 一棵是枣树，另一颗也是枣树
+Qwe: .ra 灵感
+Apo: 由于a 灵感，<Qwe>掷出了 D20=5
+Qwe: 啊没开扩展
+Qwe: .ext coc7 on
+Apo: 打开扩展 coc7
+Apo: 检测到可能冲突的扩展，建议关闭: dnd5e
+Qwe: .ra 灵感60
+Apo: <Qwe>的灵感60检定结果为: d100=1/60, ([1d100=1]) 大成功！
+Qwe: （？？？？？）
+Qwe: .setcoc
+Apo: 当前房规: 0
+Qwe: .r
+Apo: <Qwe>掷出了 D20=7
+Qwe: .nn zzz
+Apo: <Qwe>(303451945)的昵称被设定为<zzz>
+zzz: .r
+zzz: .r
+Apo: <zzz>掷出了 D20=15
+zzz: 就这样吧
+zzz: 草草结束
+zzz: .log end
+Apo: 故事落下了帷幕。
+Apo: 记录已经关闭。
+===

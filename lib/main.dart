@@ -1,11 +1,15 @@
 import 'dart:io';
 
+import 'package:dashbook/dashbook.dart';
+import 'package:dice/flame_jenny/commons/commons.dart';
+import 'package:dice/flame_jenny/jenny.dart';
 import 'package:dice/log/presentation/pages/logs_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runAsDashbook();
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -43,4 +47,20 @@ class MyApp extends StatelessWidget {
       home: const LogsScreen(),
     );
   }
+}
+
+void runAsDashbook() {
+  final dashbook = Dashbook(
+    title: 'Flame Examples',
+    theme: ThemeData.dark(),
+  );
+
+  dashbook.storiesOf('Parser')
+    ..add(
+      'ParserApp',
+      (_) => MyApp(),
+      info: 'ParserApp',
+    );
+  addFlameJennyExample(dashbook);
+  runApp(dashbook);
 }
