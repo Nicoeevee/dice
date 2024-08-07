@@ -7,6 +7,8 @@ import 'package:dice/log/domain/entities/seal_doc_parser.dart';
 import 'package:dice/log/domain/entities/text_info.dart';
 import 'package:dice/log/presentation/widgets/message_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jenny/jenny.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class LogsScreen extends StatefulWidget {
@@ -49,10 +51,10 @@ class _LogsScreenState extends State<LogsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Logs'),
+        title: const Text('Log Parser'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Row(
           children: [
             Expanded(

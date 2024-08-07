@@ -1,11 +1,8 @@
-import 'dart:ui';
+import 'dart:developer';
 
 import 'package:dice/flame_jenny/components/dialogue_controller_component.dart';
 import 'package:dice/flame_jenny/components/menu_button.dart';
-import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/palette.dart';
-import 'package:flame/text.dart';
 import 'package:flutter/services.dart';
 import 'package:jenny/jenny.dart';
 
@@ -21,6 +18,11 @@ class JennyTestExample extends FlameGame {
 
     final yarnProject = YarnProject();
     yarnProject.parse(await rootBundle.loadString('assets/yarn/test.yarn'));
+    log(yarnProject.variables.variables.entries.toString(),
+        name: 'yarnProject.variables');
+    log(yarnProject.functions.toString(), name: 'yarnProject.functions');
+    log(yarnProject.commands.toString(), name: 'yarnProject.commands');
+    log(yarnProject.characters.toString(), name: 'yarnProject.characters');
     final dialogueRunner = DialogueRunner(
       yarnProject: yarnProject,
       dialogueViews: [dialogueControllerComponent],
